@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>測驗</title>
+    <style>
+        .input-name,
+        .input-price {
+            width: 100px;
+        }
+
+        .product-grid {
+            margin-top: 20px;
+            /* 把這個元素變成 Grid 網格容器。 */
+            display: grid;
+            /* 每一欄有多寬。 */
+            grid-template-columns: 112px 112px 50px;
+            /* 每一排之間留 10px 的距離 */
+            row-gap: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <input class="input-name" placeholder="輸入商品名稱">
+    <input class="input-price" placeholder="輸入商品價格">
+    <button onclick="addProduct();">新增</button>
+    <!-- 最後商品放這裡 -->
+    <div class="product-grid">
+        
+        <!-- 商品1 -->
+        <!-- <div>海底撈泡麵</div>
+            <div>200</div>
+            <button>刪除</button> -->
+
+        <!-- 商品2 -->
+        <!-- <div>養氣人蔘</div>
+            <div>400</div>
+            <button>刪除</button> -->
+    </div>
+
+
+    <script>
+        let products = [];
+        function renderProducts(){
+             let html = "";
+            for (let i = 0; i < products.length; i++) {
+            html+=`
+            <div> ${products[i].name}</div >
+            <div>${products[i].price}</div>
+            <button onclick="removeProduct(${i});">刪除</button>
+            `;
+            }
+
+           document.querySelector(".product-grid").innerHTML= html; 
+        }
+        function addProduct() {
+            const inputName = document.querySelector(".input-name");
+            const inputPrice = document.querySelector(".input-price");
+            products.push({
+                name: inputName.value,
+                price: Number(inputPrice.value)
+            });
+            // 清空輸入框
+            inputName.value="";
+            inputPrice.value="";
+            renderProducts();
+        }
+
+        function removeProduct(i){
+            // 從第 i 個位置開始，刪除 1 個。
+            products.splice(i,1);
+            renderProducts();
+        }
+    </script>
+</body>
+
+</html>
