@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var type = prompt('請選擇樂透選項=>1.威力彩 2.大樂透 3.今彩539');
+
+        var strName;
+        var eNo;
+        var eNo2 = 0;
+        var count;
+
+        // 樂透種類
+        if (type === '1') {
+            strName = '威力彩';
+            eNo = 38;
+            count = 6;
+            eNo2 = 8;
+        } else if (type === '2') {
+            strName = '大樂透';
+            eNo = 49;
+            count = 6;
+            eNo2 = 49;
+        } else if (type === '3') {
+            strName = '今彩539';
+            eNo = 39;
+            count = 5;
+            eNo2 = 0;
+        }
+
+        // 產生不重複號碼
+        function getNumbers(count, max) {
+            var arr = [];
+
+            while (arr.length < count) {
+                var num = Math.floor(Math.random() * max) + 1;
+
+                if (!arr.includes(num)) {
+                    arr.push(num);
+                }
+            }
+            arr.sort((a, b) => a - b);
+            return arr;
+        }
+
+
+
+        // 客人選號
+        function setBetting(count, max) {
+            var arr = [];
+
+            while (arr.length < count) {
+                var num = Number(prompt(`請輸入第${arr.length + 1}個號碼(1~${max})`));
+                if (num < 1 || num > max) {
+                    alert(`請輸入 1～${max} 的號碼`);
+                } else if (arr.includes(num)) {
+                    alert('號碼不能重複');
+                } else {
+                    arr.push(num);
+                }
+            }
+            arr.sort((a, b) => a - b);
+            return arr;
+        }
+
+        // 客人選號
+        var myNumber=setBetting(count,eNo);
+        console.log(`${strName}你的號碼:${myNumber}`);
+
+
+        // 第二區
+        var myNumber2;
+
+        if (eNo2 > 0) {
+            myNumber2=Number(prompt(`輸入第二區號碼(1~${eNo2})`));
+
+            while(myNumber2<1 || myNumber2>eNo2){
+                alert(`請輸入 1～${eNo2} 的號碼`);
+                myNumber2=Number(prompt(`請輸入第二區號碼(1~${eNo2})`));
+            }
+            console.log(`${strName}你的第二區號碼:${myNumber2}`);
+        }else{
+             console.log(`${strName}沒有第二區`);
+        }
+
+
+
+        // 電腦開獎
+        var lotterNumber=getNumbers(count,eNo);
+        console.log(`${strName}第一區開獎號碼:${lotterNumber}`);
+
+        // 第二區開獎
+        var lotterNumber2;
+        if(eNo2>0){
+            lotterNumber2=Math.floor(Math.random()*eNo2)+1;
+            console.log(`${strName}第二區開獎號碼:${lotterNumber2}`);
+        }else{
+            console.log(`${strName}第二區:沒有號碼`);
+        }
+
+
+        // 比對第一區
+        var winNumber=[];
+        for(var i=0; i<myNumber.length;i++){
+            if(lotterNumber.includes(myNumber[i])){
+                winNumber.push(myNumber[i]);
+            }
+        }
+        console.log(`你中的第一區號碼:${winNumber}`);
+        console.log(`第一區中了${winNumber.length}個`);
+
+
+        // 比對第二區
+        if(eNo2>0){
+            if(myNumber2===lotterNumber2){
+                console.log(`第二區中了`);
+            }else{
+                console.log(`第二區沒中`);
+            }
+        }
+    </script>
+</body>
+
+</html>

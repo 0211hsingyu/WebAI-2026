@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- getElementById() #id
+<h1 id="title">我的蛋糕店</h1>
+
+<p class="text">巧克力蛋糕</p>
+<p class="text">草莓蛋糕</p>
+
+<input name="username">
+<script>
+    let title=document.getElementById('title');
+    console.log(title);
+    // 取得或修改 HTML 標籤裡面的內容
+    title.innerHTML='MY CAKE';
+</script>  -->
+
+
+
+    <!-- getElementsByClassName().class -->
+    <!-- <p class="cake">巧克力蛋糕</p>
+    <p class="cake">草莓蛋糕</p>
+    <p class="cake">抹茶蛋糕</p>
+    <script>
+        let cakes = document.getElementsByClassName('cake');
+        console.log(cakes[0]);
+        console.log(cakes[1]);
+        console.log(cakes[2]);
+    </script> -->
+
+    <!-- getElementsByTagName() 標籤   找多個-->
+    <!-- <p>巧克力</p>
+    <p>草莓</p>
+    <p>抹茶</p>
+    <script>
+        let paragraphs=document.getElementsByTagName('p');
+        console.log(paragraphs[0]);
+
+// 可以找按鈕或輸入
+//         document.getElementsByTagName('button');
+//         document.getElementsByTagName('input');
+    </script> -->
+
+<!-- getElementsByName() name 找多個
+    <input name="username">
+    <input name="username">
+    <input name="email">
+<script>
+    let inputs=document.getElementsByName('username');
+    console.log(inputs);
+</script> -->
+
+
+<!-- querySelector() 找第一個(CSS 選擇器)
+<h1 id="title">My Cake Studio</h1>
+<p class="cake">巧克力蛋糕</p>
+
+<div class="cake">
+    <p>巧克力蛋糕</p>
+</div>
+
+<script>
+    let title=document.querySelector('#title');
+    let cake=document.querySelector('.cake');
+    let paragraph = document.querySelector('p');
+
+    let text = document.querySelector('.cake p');
+</script> -->
+
+<!-- querySelectorAll() 找全部(CSS 選擇器)
+<p class="cake">巧克力</p>
+<p class="cake">草莓</p>
+<p class="cake">抹茶</p>
+<script>
+let cakes=document.querySelectorAll('.cake');
+console.log(cakes); 
+</script> -->
+
+
+    <!-- <input class="inputHeight" placeholder="請輸入身高"><br>
+    <input class="inputWeight" placeholder="請輸入體重"><br>
+    <button onclick="calculateHeight()">計算BMI</button>
+    <p class="convertHeight">BMI:</p>
+
+    <script>
+        function calculateHeight() {
+            let bmi = 0;
+            let height = document.querySelector('.inputHeight').value;
+            let weight = document.querySelector('.inputWeight').value;
+            height = Number(height);
+            weight = Number(weight);
+            height /= 100;
+            bmi = weight / (height * height);
+            console.log(bmi);
+            document.querySelector('.convertHeight').innerHTML = `BMI:${bmi.toFixed(2)}`;
+        }
+    </script> -->
+
+
+
+    <!-- <input class="inputHeight" placeholder="請輸入身高">
+    <button onclick="calculateHeight()">計算</button>
+    <p class="covertHeight">身高:公尺</p>
+
+    <script>
+        function calculateHeight() {
+            let height = document.querySelector('input').value;
+            height = Number(height);
+            height /= 100;
+            console.log(height);
+            document.querySelector('p').innerHTML = `身高:${height}公尺`;
+        }
+    </script> -->
+
+
+
+
+
+    <!-- <button onclick="subscribe()">訂閱</button>
+    <script>
+        function subscribe(){
+            const buttonElement=
+            document.querySelector('button');
+
+        if(buttonElement.innerText==='訂閱'){
+            buttonElement.innerText='已訂閱'
+        }else{
+            buttonElement.innerText='訂閱'
+        }
+
+        console.log(buttonElement.innerText);
+        }
+    </script> -->
+</body>
+
+</html>
